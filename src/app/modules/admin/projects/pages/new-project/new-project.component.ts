@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ColorPickerService, Cmyk } from 'ngx-color-picker';
+import { FormControl } from '@angular/forms';
+import { ThemePalette } from '@angular/material/core';
 
 
 @Component({
@@ -8,9 +11,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NewProjectComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+  
+   }
 
   ngOnInit(): void {
   }
+
 
 }

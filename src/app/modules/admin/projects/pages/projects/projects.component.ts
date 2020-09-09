@@ -1,4 +1,7 @@
 import { Component, OnInit, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { ProjectFormComponent } from '../../components/project-form/project-form.component';
+import { ProjectFormModalComponent } from '../../components/project-form-modal/project-form-modal.component';
 @Component({
   selector: 'app-projects',
   templateUrl: './projects.component.html',
@@ -8,7 +11,7 @@ import { Component, OnInit, ViewEncapsulation, ChangeDetectionStrategy } from '@
 })
 export class ProjectsComponent implements OnInit {
 
-  constructor() { }
+  constructor(public dialog: MatDialog) {}
 
   projects = [
     {
@@ -33,4 +36,24 @@ export class ProjectsComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  handleEdit(event){
+      this.openProjectForm(event);
+  }
+
+  handleDelete(event) {
+    if(confirm("Eliminar?")){
+
+      console.log(event);
+    }
+  }
+
+  openProjectForm(project?) {
+    const dialogRef = this.dialog.open(ProjectFormModalComponent, {
+      data: project
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result);
+    });
+  }
 }
